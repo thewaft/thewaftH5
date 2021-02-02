@@ -1,0 +1,61 @@
+html,page,body{
+    height: 100%;
+    width: 100%;
+    margin:0;
+}
+page{
+    font-size: 100px;
+    height:100%;
+    position: absolute;
+    text-align: center;
+    padding-top: 30%;
+
+     <!--padding-top: 40%;
+         padding-left: 40%;-->
+
+}
+#a{
+    background-color: lightgreen;
+    animation: spring 6s infinite;
+}
+#b{
+    background-color: red;
+    animation: summer 6s infinite;
+}
+#c{
+    animation: autumn 6s infinite;
+}
+#d{
+    background-color: black;
+    color: white;
+    animation: winter 6s infinite;
+}
+@keyframes spring {
+    0%{opacity: 0}
+    25%{opacity: 100}
+    50%{opacity: 0}
+    75%{opacity: 0}
+    100%{opacity: 0}
+}
+@keyframes summer {
+    0%{opacity: 0}
+    25%{opacity: 0}
+    50%{opacity: 100}
+    75%{opacity: 0}
+    100%{opacity: 0}
+}
+@keyframes autumn {
+    0%{opacity: 0}
+    25%{opacity: 0}
+    50%{opacity: 0}
+    75%{opacity: 100}
+    100%{opacity: 0}
+}
+@keyframes winter {
+    0%{opacity: 0}
+    25%{opacity: 0}
+    50%{opacity: 0}
+    75%{opacity: 0}
+    100%{opacity: 100}
+}
+
