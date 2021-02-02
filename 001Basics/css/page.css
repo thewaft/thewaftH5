@@ -4,58 +4,82 @@ html,page,body{
     margin:0;
 }
 page{
-    font-size: 100px;
+    font-size: 250px;
     height:100%;
     position: absolute;
-    text-align: center;
-    padding-top: 30%;
 
-     <!--padding-top: 40%;
-         padding-left: 40%;-->
+    padding-top: 80%;
+    padding-left: 10%;
+<!--padding-top: 40%;
+padding-left: 40%;-->
 
 }
+
 #a{
     background-color: lightgreen;
-    animation: spring 6s infinite;
+    animation: spring 10s infinite;
 }
 #b{
     background-color: red;
-    animation: summer 6s infinite;
+    animation: summer 10s infinite;
 }
 #c{
-    animation: autumn 6s infinite;
+    animation: autumn 10s infinite;
+    background-image: url("../images/01.jpg");
+    background-size: 100% 100%;
 }
 #d{
     background-color: black;
     color: white;
-    animation: winter 6s infinite;
+    animation: winter 10s infinite;
+}
+#z{
+    font-size: 100px;
+    display: block;
+    padding-left: 13%;
+    animation: z 10s infinite;
+}
+@keyframes z {
+    0%{opacity: 50}
+    15%{opacity: 0}
+    20%{opacity: 0}
+    40%{opacity: 0}
+    60%{opacity: 0}
+    80%{opacity: 0}
+    90%{opacity: 100}
+    100%{opacity: 50}
 }
 @keyframes spring {
     0%{opacity: 0}
-    25%{opacity: 100}
-    50%{opacity: 0}
-    75%{opacity: 0}
+    20%{opacity: 100}
+    40%{opacity: 0}
+    60%{opacity: 0}
+    80%{opacity: 0}
+
     100%{opacity: 0}
 }
 @keyframes summer {
     0%{opacity: 0}
-    25%{opacity: 0}
-    50%{opacity: 100}
-    75%{opacity: 0}
+    20%{opacity: 0}
+    40%{opacity: 100}
+    60%{opacity: 0}
+    80%{opacity: 0}
     100%{opacity: 0}
 }
 @keyframes autumn {
     0%{opacity: 0}
-    25%{opacity: 0}
-    50%{opacity: 0}
-    75%{opacity: 100}
+    20%{opacity: 0}
+    40%{opacity: 0}
+    60%{opacity: 100}
+    80%{opacity: 0}
     100%{opacity: 0}
 }
 @keyframes winter {
     0%{opacity: 0}
-    25%{opacity: 0}
-    50%{opacity: 0}
-    75%{opacity: 0}
-    100%{opacity: 100}
+    20%{opacity: 0}
+    40%{opacity: 0}
+    60%{opacity: 0}
+    80%{opacity: 100}
+    100%{opacity: 0}
 }
 
