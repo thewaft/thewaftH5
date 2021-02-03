@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>the second is half</title>
+    <style type="text/css">
+        body{
+            font-size: 24px;
+        }
+    </style>
+    <script>
+        var cups,money,per;
+        cups = prompt("please input your number ");
+        per = 6;
+        if (cups%2 == 0){
+            money=cups*(per*1.5);
+            document.write("you should give me" + money);
+        }else if (cups%2 == 1){
+            money=(cups*1-1)/2*(per*1.5)+per;
+            document.write("you should give me" + money);
+        }else {
+            document.write("what you input is wrong");
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>
