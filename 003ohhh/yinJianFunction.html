@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>function</title>
+  <script>
+   /*     var ga = 'global';
+        var func = function() {
+            var la = 'local';
+            return function() {
+                return function()
+                {
+                    return function()
+                    {
+                        alert(la);alert(ga);
+                    }
+                }
+            }
+
+        }
+        a = func();
+        a()()();                  // 弹出 local 和 global    */
+
+      var func = function() {
+          var la = 'local';
+          alert(1);
+          repeat();
+          alert(2);
+      };
+      
+      var ga = 'global';
+
+      function repeat() {
+          alert(la);
+      }
+
+   func();
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>question</title>
+    <style type="text/css">
+        body{
+            font-size: 100px;
+            color: #e1ff96;
+        }
+    </style>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function getAnswer() {
+        var random = Math.floor(Math.random()*4)+1;
+        var str = String.fromCharCode(random*1+64);        //得到random+64的ASCII码
+        document.write(str);
+    }
+    getAnswer();
+    getAnswer();
+    getAnswer();
+    getAnswer();
+    getAnswer();
+</script>

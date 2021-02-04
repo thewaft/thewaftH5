@@ -3,11 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <title>guess</title>
-    <script>
-
-    </script>
+    <style>
+        body{
+            font-size: 70px;
+        }
+    </style>
 </head>
 <body>
-
+<p id="demo">你肯定猜不对</p>
 </body>
 </html>
+<script>
+
+    var guess = prompt("您猜怎么着");
+    var random = Math.floor((Math.random())*6)+1;         //random函数生成随机数
+    var diff = Math.abs(guess-random);
+    console.info(random);
+    console.log(random);
+    var str;
+
+    function count() {
+        if (!Number.isInteger(guess*1) || guess>6 || guess<1){
+            str = "格式错误，莫得机会了";
+        }else if (guess == random){
+            str ="\n您猜对了\n" + random + "<img src='images/"+random+".jpg'>";
+        }else {
+            str ="\n您猜错了，莫得机会了\n" + random + "<img src='images/"+random+".jpg'>";
+        }
+    }
+
+    if (!Number.isInteger(guess*1) || guess>6 || guess<1){
+        var guess = prompt("格式错误，还有一次机会");
+        count();
+    } else if (guess == random) {
+        str = "\n您猜对了\n" + random + "<img src='images/" + random + ".jpg'>";
+    }else if (diff>1){
+        if (guess>random){
+            var guess = prompt("您猜得太大了，还有一次机会");
+            count();
+        }else {
+            var guess = prompt("您猜得太小了，还有一次机会");
+            count();
+        }
+    }else {
+        if (guess>random){
+            var guess = prompt("您猜得比较大，还有一次机会");
+            count();
+        }else {
+            var guess = prompt("您猜得比较小，还有一次机会");
+            count();
+        }
+    }
+         document.getElementById("demo").innerHTML=str;
+
+         
+        // }else if (guess>random && diff>1){                       //猜的太大了
+        //     var guess = prompt("您猜得太大了，还有一次机会");
+        //     count();
+        // }else if (guess<random && diff>1){
+        //     var guess = prompt("您猜得太小了，还有一次机会");         //猜的太小了
+        //      count();
+        // } else if (guess<random && diff<1){
+        //     var guess = prompt("您猜得比较小了，还有一次机会");         //猜的比较小
+        //      count();
+        // }
+        // else if (guess>random && diff<1){
+        //     var guess = prompt("您猜的比较大，还有一次机会");         //猜的比较太
+        //      count();
+        // }else {
+        //     prompt("输入错误，还有最后一次机会");
+        //     count();
+        //  }
+
+
+</script>
