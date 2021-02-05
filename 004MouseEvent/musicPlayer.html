@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>musicPlayer</title>
+    <style>
+        #bgmButton{
+            width: 500px;
+            height: 374px;
+            background-image: url("image/michel.gif");
+        }
+    </style>
+</head>
+<body>
+<audio id="bgm" src="music/bgm.wav" preload="auto" autoplay="autoplay" loop="loop"></audio>
+<div id="bgmButton" onclick="control()"></div>
+</body>
+<script>
+    isPlaying = true;
+    function control() {
+        if (isPlaying){           //判断条件改成document.getElementById("bgm").play()的时候为什么再次点击就不行了，？？？？？？？？？？
+            document.getElementById("bgm").pause();
+            document.getElementById("bgmButton").style.backgroundImage="url('image/music.gif')"
+            isPlaying = !isPlaying;
+        }else {
+            document.getElementById("bgm").play();
+            document.getElementById("bgmButton").style.backgroundImage="url('image/michel.gif')"
+            isPlaying = !isPlaying;
+        }
+    }
+</script>
+</html>

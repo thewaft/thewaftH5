@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>dressUp</title>
+    <style>                                    /*以工装裤，绿上衣为准，设置其他样式需单独为每一件衣服设置css样式，以及<div id="container">里添加 */
+        #upper{
+            width: 195px;
+            height: 236px;
+            position: absolute;
+            top: 185px;
+            left: 12px;
+        }
+        #lower{
+            width: 125px;
+            height: 176px;
+            position: absolute;
+            top: 400px;
+            left: 35px;
+        }
+        #cap-s{
+            width: 145px;
+            height: 96px;
+            position: absolute;
+            left: 25px;
+        }
+        #shoes-s{
+            width: 85px;
+            height: 56px;
+            position:absolute;
+            top: 700px;
+            left: 55px;
+        }
+        #container{
+            width: 195px;
+            height: 766px;
+            position: absolute;
+            top: 60px;
+            background-image: url("/image/dressup/人体.jpg.png");
+        }
+        #menu div{
+            float: left;
+            border: black solid 1px;
+            text-align: center;
+            width: 60px;
+        }
+    </style>
+</head>
+<body>
+<div id="menu">
+    <div id="Casual" onclick="Casual()">上衣</div>
+    <div id="Green" onclick="Green()">绿上衣</div>
+    <div id="dungaree" onclick="dungaree()">工装裤</div>
+    <div id="beachPants" onclick="beachPants()">沙滩裤</div>
+    <div id="cap" onclick="cap()">帽子</div>
+    <div id="shoes" onclick="shoes()">鞋子</div>
+
+</div>
+<div id="container">
+    <div id="cap-s"></div>
+    <div id="upper"></div>
+    <div id="lower"></div>
+    <div id="shoes-s"></div>
+</div>
+</body>
+<script>
+    document.getElementById("container").style.backgroundImage="url('image/dressup/人体.jpg.png')";
+    var isGreen,isCasual,isdungaree,isbeachPants,iscap,isshoes=true;
+    function Green() {                         //没穿就穿上，穿上再点就没开了，其余套路相同
+        if (isGreen){
+            document.getElementById("upper").style.backgroundImage="url('image/dressup/绿上衣.jpg.png')";
+            isGreen = !isGreen;
+        }else {
+            document.getElementById("upper").style.backgroundImage="url('')";
+            isGreen = !isGreen;
+        }
+    }
+    function Casual() {
+        document.getElementById("upper").style.backgroundImage="url('image/dressup/上衣.jpg.png')";
+    }
+    function dungaree() {
+        document.getElementById("lower").style.backgroundImage="url('image/dressup/工装裤.jpg.png')";
+    }
+    function beachPants() {
+        document.getElementById("lower").style.backgroundImage="url('image/dressup/沙滩裤.jpg.png')";
+    }
+    function cap() {
+        document.getElementById("cap-s").style.backgroundImage="url('image/dressup/帽子.jpg.png')";
+    }
+    function shoes() {
+        document.getElementById("shoes-s").style.backgroundImage="url('image/dressup/鞋子.jpg.png')";
+    }
+</script>
+</html>
