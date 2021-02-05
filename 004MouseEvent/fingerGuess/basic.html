@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>basic</title>
+
+</head>
+<body onload="go()">
+
+</body>
+<script>
+    var Random = Math.random();
+    function go() {
+        //  alert(Random);
+        document.body.innerHTML=Random;
+        if (Random<1/3){
+            document.body.innerHTML="<img src='images/paper.png'>";
+        }else if (Random<2/3){
+            document.body.innerHTML="<img src='images/rock.png'>";
+        }else {
+            document.body.innerHTML="<img src='images/scissors.png'>"
+        }
+    }
+</script>
+</html>
