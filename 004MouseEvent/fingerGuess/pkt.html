@@ -3,63 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>lalal</title>
-    <style>
-        #container{
-            width: 600px;
-            height: 300px;
-            border: chocolate solid 5px;
-            margin: 0 auto ;
-        }
-        #container div{
-            width: 300px;
-            height: 300px;
-            float: left;
-        }
-        #computer{
-            background-color: greenyellow;
-            /*vertical-align: middle;*/
-            /*display: table-cell;*/
-        }
-        #computerChoice{
-            width: 300px;
-            height: 300px;
-            position: relative;
-            left: 40px;
-            top: 90px;
-            z-index: 3;
-        }
-        #di{
-            position: absolute;
-            font-size: 200px;
-            padding-left: 50px;
-            padding-top: 20px;
-            opacity: 25%;
-            font-family: 楷体;
-        }
-        #mine{
-            background-color: darkcyan;
-        }
-        #wo{
-            position: absolute;
-            font-size: 200px;
-            padding-left: 50px;
-            padding-top: 20px;
-            opacity: 25%;
-            font-family: 楷体;
-        }
-        #Choice{
-            padding-left: 40px;
-            z-index: 23;                           /* //设置层数，防止被遮挡，层数高遮挡层数低的*/
-        }
-        #mineChoice{
-            width: 215px;
-            height: 207px;
-            position: relative;
-            top: -210px;
-            left: 50px;
-            z-index: 1;
-        }
-    </style>
+    <link href="pkt.css" rel="stylesheet">
 </head>
 <body>
 <div id="container">
@@ -78,84 +22,9 @@
 <!--        <div id="wo">我</div>-->
         </div>
 
-    </div>
 </div>
+<div id="result"></div>
 
 </body>
-<script>
-
-    //根据用户选择，调用石头剪刀布
-    function paper() {
-        document.getElementById("mineChoice").innerHTML="<img src=\"images/paper.png\">";
-        myChoice=1/3;
-        judge_2();
-    }
-    function rock() {
-        document.getElementById("mineChoice").innerHTML="<img src=\"images/rock.png\">";
-        myChoice=2/3;
-        judge_2();
-    }
-    function scissors() {
-        document.getElementById("mineChoice").innerHTML="<img src=\"images/scissors.png\">";
-        myChoice=3/3;
-        judge_2()
-    }
-    //电脑生成自己选择
-    function gogo() {
-        var str;
-        var r_Random = Math.random();
-
-        if (r_Random < 1 / 3) {
-            str = "<img src=\"images/paper.png\">";
-        } else if (r_Random < 2 / 3) {
-            str = "<img src=\"images/rock.png\">";
-        } else {
-            str = "<img src=\"images/scissors.png\">"
-        }
-        document.getElementById("computerChoice").innerHTML= str;
-        return r_Random;
-    }
-
-    //判断函数，根据机器的选择，再根据自己的选择
-    function judge_2() {
-        var c_c=gogo();
-        if (c_c < 1/3) {
-            if (myChoice == 1/3) {
-                alert("We're in a draw");
-               // document.write("We're in a draw");
-            } else if (myChoice == 2/3) {
-                alert("You lose");
-               // document.write("You lose");
-            } else if (myChoice == 3/3) {
-                alert("You win");
-               // document.write("You win");
-            }
-        } else if (c_c < 2 / 3) {
-            if (myChoice == 1 / 3) {
-                alert("You win");
-                // document.write("You win");
-            } else if (myChoice == 2 / 3) {
-                alert("We're in a draw");
-               // document.write("We're in a draw");
-            } else if (myChoice == 3 / 3) {
-                alert("You lose");
-               // document.write("You lose");
-            }
-        } else if (c_c < 3 / 3) {
-            if (myChoice == 1 / 3) {
-                alert("You lose");
-               // document.write("You lose");
-            } else if (myChoice == 2 / 3) {
-                alert("You win");
-               // document.write("You win");
-            } else if (myChoice == 3 / 3) {
-                alert("We're in a draw");
-               // document.write("We're in a draw");
-            }
-        }
-        document.write(str);
-    }
-
-
-</script>
+<script src="pkt.js"></script>
 </html>
