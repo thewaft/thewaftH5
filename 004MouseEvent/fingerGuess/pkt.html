@@ -40,16 +40,15 @@
             font-family: 楷体;
         }
         #Choice{
-            left: 50px;
-            position: absolute;
-
-            z-index: 2;                            //设置层数，防止被遮挡，层数高遮挡层数低的
+            padding-left: 40px;
+            z-index: 23;                            //设置层数，防止被遮挡，层数高遮挡层数低的
         }
         #mineChoice{
             width: 215px;
             height: 207px;
             position: absolute;
-            top: 10px;
+            top: 100px;
+            left: 820px;
             z-index: 1;
         }
     </style>
@@ -66,7 +65,7 @@
             <input type="button" value="石头" onclick="rock()"/>
             <input type="button" value="剪刀" onclick="scissors()"/>
         </div>
-        <div id="mineChoice"><img src="images/papdaer...png" /></div>
+        <div id="mineChoice"><img src="images/paper.png" /></div>
         </div>
 <!--        <div id="wo">我</div>-->
     </div>
@@ -74,6 +73,7 @@
 
 </body>
 <script>
+    //根据用户选择，调用石头剪刀布
     function paper() {
         document.getElementById("mineChoice").innerHTML="<img src=\"images/paper.png\">";
     }
@@ -83,5 +83,21 @@
     function scissors() {
         document.getElementById("mineChoice").innerHTML="<img src=\"images/scissors.png\">";
     }
+    //电脑生成自己选择
+    var src;
+    function go() {
+        var Random = Math.random();
+        if (Random < 1 / 3) {
+            src = "<img src=\"images/paper.png\">";
+        } else if (Random < 2 / 3) {
+            src = "<img src=\"images/rock.png\">";
+        } else {
+            src = "<img src=\"images/scissors.png\">"
+        }
+        return src;
+    }
+    //获取电脑结果
+    src=go();
+
 </script>
 </html>
