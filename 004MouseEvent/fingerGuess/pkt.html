@@ -20,6 +20,14 @@
             /*vertical-align: middle;*/
             /*display: table-cell;*/
         }
+        #computerChoice{
+            width: 300px;
+            height: 300px;
+            position: relative;
+            left: 40px;
+            top: 90px;
+            z-index: 3;
+        }
         #di{
             position: absolute;
             font-size: 200px;
@@ -41,14 +49,14 @@
         }
         #Choice{
             padding-left: 40px;
-            z-index: 23;                            //设置层数，防止被遮挡，层数高遮挡层数低的
+            z-index: 23;                           /* //设置层数，防止被遮挡，层数高遮挡层数低的*/
         }
         #mineChoice{
             width: 215px;
             height: 207px;
-            position: absolute;
-            top: 100px;
-            left: 820px;
+            position: relative;
+            top: -210px;
+            left: 50px;
             z-index: 1;
         }
     </style>
@@ -61,43 +69,93 @@
     </div>
     <div id="mine">
         <div id="Choice">
-            <input type="button" value="布" onclick="paper()"/>
-            <input type="button" value="石头" onclick="rock()"/>
-            <input type="button" value="剪刀" onclick="scissors()"/>
+            <!--        设置按钮-->
+            <input type="button" value="布" onclick="paper();gogo();" />
+            <input type="button" value="石头" onclick="rock();gogo();"/>
+            <input type="button" value="剪刀" onclick="scissors();gogo();"/>
         </div>
-        <div id="mineChoice"><img src="images/paper.png" /></div>
-        </div>
+        <div id="mineChoice"></div>
 <!--        <div id="wo">我</div>-->
+        </div>
+
     </div>
 </div>
 
 </body>
 <script>
+
     //根据用户选择，调用石头剪刀布
     function paper() {
         document.getElementById("mineChoice").innerHTML="<img src=\"images/paper.png\">";
+        myChoice=1/3;
+        judge_2();
     }
     function rock() {
         document.getElementById("mineChoice").innerHTML="<img src=\"images/rock.png\">";
+        myChoice=2/3;
+        judge_2();
     }
     function scissors() {
         document.getElementById("mineChoice").innerHTML="<img src=\"images/scissors.png\">";
+        myChoice=3/3;
+        judge_2()
     }
     //电脑生成自己选择
-    var src;
-    function go() {
-        var Random = Math.random();
-        if (Random < 1 / 3) {
-            src = "<img src=\"images/paper.png\">";
-        } else if (Random < 2 / 3) {
-            src = "<img src=\"images/rock.png\">";
+    function gogo() {
+        var str;
+        var r_Random = Math.random();
+
+        if (r_Random < 1 / 3) {
+            str = "<img src=\"images/paper.png\">";
+        } else if (r_Random < 2 / 3) {
+            str = "<img src=\"images/rock.png\">";
         } else {
-            src = "<img src=\"images/scissors.png\">"
+            str = "<img src=\"images/scissors.png\">"
         }
-        return src;
+        document.getElementById("computerChoice").innerHTML= str;
+        return r_Random;
     }
-    //获取电脑结果
-    src=go();
+
+    //判断函数，根据机器的选择，再根据自己的选择
+    function judge_2() {
+        var c_c=gogo();
+        if (c_c < 1/3) {
+            if (myChoice == 1/3) {
+                alert("We're in a draw");
+               // document.write("We're in a draw");
+            } else if (myChoice == 2/3) {
+                alert("You lose");
+               // document.write("You lose");
+            } else if (myChoice == 3/3) {
+                alert("You win");
+               // document.write("You win");
+            }
+        } else if (c_c < 2 / 3) {
+            if (myChoice == 1 / 3) {
+                alert("You win");
+                // document.write("You win");
+            } else if (myChoice == 2 / 3) {
+                alert("We're in a draw");
+               // document.write("We're in a draw");
+            } else if (myChoice == 3 / 3) {
+                alert("You lose");
+               // document.write("You lose");
+            }
+        } else if (c_c < 3 / 3) {
+            if (myChoice == 1 / 3) {
+                alert("You lose");
+               // document.write("You lose");
+            } else if (myChoice == 2 / 3) {
+                alert("You win");
+               // document.write("You win");
+            } else if (myChoice == 3 / 3) {
+                alert("We're in a draw");
+               // document.write("We're in a draw");
+            }
+        }
+        document.write(str);
+    }
+
 
 </script>
 </html>
