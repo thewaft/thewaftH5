@@ -1,5 +1,5 @@
 //根据用户选择，调用石头剪刀布
-let r_Random=0, diScore = 0, woScore = 0, level = 1;
+let r_Random=0, diScore = 0, woScore = 0, level = 3;
 //关卡系统，主要作用是显示当前第几关，只需要在通过小关之后进行调用
 function levelSystem() {
     if (level==1){
@@ -16,7 +16,7 @@ function levelSystem() {
         document.getElementById("levelName").innerHTML="输了就换";
     }else if (level==5){
         document.getElementById("levelNumber").innerHTML= "第"+level+"关" ;
-        document.getElementById("levelName").innerHTML="爱先生生";
+        document.getElementById("levelName").innerHTML="爱布生生";
     }else if (level==6){
         document.getElementById("levelNumber").innerHTML= "第"+level+"关" ;
         document.getElementById("levelName").innerHTML="东方不败";
@@ -110,6 +110,8 @@ function judge_2() {
         level++;
         woScore = 0;
         diScore = 0;
+        comIsWin=false;
+        comIsFalse=true;
         document.getElementById("diScore").innerHTML = diScore;
         document.getElementById("woScore").innerHTML = woScore;
         document.getElementById("result").innerHTML = "恭喜你到第" + level + "关了";
@@ -174,7 +176,7 @@ function level_8() {
 }*/
 /*根据关卡设定，决定r_Random的值，并把r_Random返回给r_Random，
 相当于是一个根据关卡处理r_Random的值的函数*/
-function computerChoose() {
+function computerChoose(isWin,isFalse) {
     if (level==1){
         //为什么这里不能调用level_1()函数，在浏览器里调试每次都这一步都调不动level_1函数，然后直接结束levelChoose()函数
         // level_1();
@@ -187,20 +189,64 @@ function computerChoose() {
         r_Random=myChoice-1/1000;
         return r_Random;
     }else if (level==3){
-        //level_3();
-
+        //level_3();赢了继续
+        if (!comIsWin){
+            r_Random=Math.random();
+        }
+        return r_Random;
     }else if (level==4){
-        //level_4();
-
+        let n=0;
+        let diff=r_Random;
+        //level_4();赢了继续出，但是一旦输了就换,（与上一次不一样）
+        if (comIsFalse  && n==0){                  //添加一个每关玩的次数的变量，用来控制每一关第一次的初始值
+            r_Random=Math.random();
+            n++;
+        }else if (comIsFalse){
+            r_Random=Math.random();               //这块儿感觉能用逻辑条件优化一下
+            while (Math.abs(diff-r_Random)<1/3){
+                r_Random=Math.random();
+            }
+        }
+        return r_Random;
     }else if (level==5){
-        //level_5();
-
+        //level_5();老爱出布
+        r_Random=Math.random();
+        if (1/3<r_Random<4/9){
+            r_Random=r_Random-3/9;
+        }else if (6/9<r_Random<7/9){
+            r_Random=r_Random-7/9;
+        }
+        return r_Random;
     }else if (level==6){
-       // level_6();
-
+       // level_6();50%必输
+        let c_Random;
+        c_Random=Math.random();
+        if (c_Random<1/2){
+            if (myChoice==1/3){
+                r_Random=2/3-1/1000;
+            }else if (myChoice==2/3){
+                r_Random=3/3-1/1000;
+            }else {
+                r_Random=1/3-1/1000;
+            }
+        }else {
+            r_Random=Math.random();
+        }
+        return r_Random;
     }else if (level==7){
-       // level_7();
-
+       // level_7();%50必赢
+        let d_Random=Math.random();
+        if (d_Random<(1/2)){
+            if (myChoice==(1/3)){
+                r_Random=3/3-1/1000;
+            }else if (myChoice==2/3){
+                r_Random=1/3-1/1000;
+            }else {
+                r_Random=2/3-1/1000;
+            }
+        }else {
+            r_Random=Math.random();
+        }
     }else if (level==8){
         //level_8();
 
@@ -210,6 +256,7 @@ function computerChoose() {
 }
 
 //胜负积分系统
+let comIsWin=false,comIsFalse=true;              //需要判定输赢，bot需要根据输赢做出判断，添加输赢变量
 function win() {
     //diScore + 0;
     woScore ++;
@@ -217,6 +264,7 @@ function win() {
     document.getElementById("woScore").innerHTML = woScore;
     //alert("You win");
     document.getElementById("result").innerHTML = "You win";
+    comIsFalse=true;
 }
 function lose() {
     diScore ++;
@@ -225,6 +273,8 @@ function lose() {
     document.getElementById("woScore").innerHTML = woScore;
     //alert("You lose");
     document.getElementById("result").innerHTML = "You lose";
+    comIsWin=true;
+    comIsFalse=false;
 }
 function draw() {
     diScore ++;
@@ -233,4 +283,5 @@ function draw() {
     document.getElementById("woScore").innerHTML = woScore;
     //alert("We're in a draw");
     document.getElementById("result").innerHTML = "We're in a draw";
+    comIsFalse=false;
 }
