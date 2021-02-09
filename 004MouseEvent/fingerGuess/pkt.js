@@ -1,5 +1,5 @@
 //根据用户选择，调用石头剪刀布
-let r_Random=0, diScore = 0, woScore = 0, level = 3;
+let r_Random=0, diScore = 0, woScore = 0, level = 7;
 //关卡系统，主要作用是显示当前第几关，只需要在通过小关之后进行调用
 function levelSystem() {
     if (level==1){
@@ -106,7 +106,18 @@ function judge_2() {
         }
     }
     //根据积分决定关卡数值，并调用显示关卡名称函数
-    if (woScore >= 5) {
+    let winScore=5;
+    if (diScore >= winScore){
+        level--;
+        woScore = 0;
+        diScore = 0;
+        comIsWin=false;
+        comIsFalse=true;
+        document.getElementById("diScore").innerHTML = diScore;
+        document.getElementById("woScore").innerHTML = woScore;
+        document.getElementById("result").innerHTML = "很遗憾你回到第" + level + "关了";
+        levelSystem();
+    }else if (woScore >= winScore) {
         level++;
         woScore = 0;
         diScore = 0;
@@ -247,6 +258,7 @@ function computerChoose(isWin,isFalse) {
         }else {
             r_Random=Math.random();
         }
+        return r_Random;
     }else if (level==8){
         //level_8();
 
